@@ -1,0 +1,212 @@
+## 1.2 Queries
+
+Antes de realizar as queries deve-se entrar na base de dados com o comando: `use contratos`
+
+1. Quantos registos estão na base de dados;
+```
+db.contratos.countDocuments()
+36377
+```
+
+2. Quantos registos de contratos têm o tipo de procedimento com valor "Ajuste Direto Regime Geral"?
+```
+db.contratos.find({ "tipoprocedimento": "Ajuste Direto Regime Geral" }).count()
+17067
+```
+
+3. Qual a lista de entidades comunicantes (ordenada alfabeticamente e sem repetições)?
+```
+db.contratos.distinct("entidade_comunicante").sort()
+[
+  'A ARCIAL - Associação para Recuperação de Cidadãos Inadaptados de Oliveira do Hospital',
+  'A Oficina Centro de Artes e Mesteres Tradicionais de Guimarães, CIPRL',
+  'A. D. A. M. - Águas do Alto Minho, S. A.',
+  'ABIMOTA - Associação Nacional das Indústrias de Duas Rodas, Ferragens, Mobiliário e Afins',
+  'ABMG - Águas do Baixo Mondego e Gândara, E. I. M., S. A.',
+  'AC, Águas de Coimbra, E. M.',
+  'ACA - Associação Casa da Arquitectura',
+  'ACAPORAMA - Associação de Casas do Povo da Região Autonoma da Madeira',
+  'ACISO - Associação Empresarial Ourém - Fátima',
+  'ACLEM - Arte, Cultura e Lazer, Empresa Municipal, E. M.',
+  'ACPMR - Associação Cluster Portugal Mineral Resources',
+  'AD ELO Associação de Desenvolvimento Local da Bairrada e Mondego',
+  'ADAE - Associação de Desenvolvimento da Alta Estremadura',
+  'ADC - Águas da Covilhã, E. M.',
+  'ADD - Associação de Desenvolvimento do Dão',
+  'ADEMINHO - Associação para o Desenvolvimento do Ensino Profissional do Alto Minho Interior',
+  'ADENE - Agência para a Energia',
+  'ADEPTOLIVA - Associação para o Desenvolvimento do Ensino Profissional dos Concelhos de Tábua, Oliveira do Hospital e Arganil',
+  'ADER-AL - Associação para o Desenvolvimento do Espaço Rural do Norte do Alentejo',
+  'ADICE - Associação para o Desenvolvimento Integrado da Cidade de Ermesinde',
+  'ADIRN - Associação para o Desenvolvimento Integrado do Ribatejo Norte',
+  'ADIST - Associação para o Desenvolvimento do Instituto Superior Técnico',
+  'ADL - Associação de Desenvolvimento do Litoral Alentejano',
+  'ADP - Águas de Portugal Internacional - Serviços Ambientais, S. A.',
+  'ADRAT - Associação de Desenvolvimento da Região do Alto Tâmega',
+  'ADREPES - Associação de Desenvolvimento Regional da Península de Setúbal',
+  'ADRIMAG - Associação de Desenvolvimento Rural Integrado das Serras de Montemuro, Arada e Gralheira',
+  'ADVID - Associação para o Desenvolvimento da Viticultura Duriense',
+  'ADXTUR - Agência para o Desenvolvimento Turístico das Aldeias do Xisto',
+  'AEBB - Associação Empresarial da Beira Baixa',
+  'AECRM-Associação Empresarial Concelho Rio Maior',
+  'AEPM - Associação Equiterapêutica do Porto e Matosinhos',
+  'AER - Associação Empresarial de Resende',
+  'AEVA - Associação para a Educação e Valorização da Região de Aveiro',
+  'AGERE- Empresa de Águas Efluentes e Resíduos de Braga, E. M.',
+  'AIDA Assoc Industrial Distrito de Aveiro',
+  'AMARSUL - Valorização e Tratamento de Resíduos Sólidos, S. A.',
+  'AMBILITAL - Investimentos Ambientais no Alentejo, E. I. M.',
+  'AMBISOUSA - Empresa Intermunicipal de Tratamento e Gestão de Residuos Sólidos, E.I.M.',
+  'AMC - Vouga Associação de Municípios do Carvoeiro - Vouga',
+  'AMCAL - Associação de Municípios do Alentejo Central',
+  'ANI - Agência Nacional de Inovação, S. A.',
+  'APA - Administração do Porto de Aveiro, S. A.',
+  'APCB - Associação de Paralisia Cerebral de Braga',
+  'APCTP - Associação do Parque de Ciência e Tecnologia do Porto',
+  'APCV - Associação de Paralisia Cerebral de Viseu',
+  'APEPO-Associação Para o Ensino Profissional do Oeste',
+  'APFF - Administração do Porto da Figueira da Foz, S. A.',
+  'APIN EIM, SA',
+  'APL / Administração do Porto de Lisboa, SA',
+  'APPACDM DE LISBOA - Associação Portuguesa de Pais e Amigos do Cidadão Deficiente Mental',
+  'APPACDM de Coimbra - Associação Portuguesa de Pais e Amigos do Cidadão Deficiente Mental',
+  'APPACDM de Mirandela - Associação Portuguesa de Pais e Amigos do Cidadão Deficiente Mental',
+  'APPACDM de Portalegre - Associação Portuguesa de Pais e Amigos do Cidadão Deficiente Mental',
+  'APPACDM de Setúbal - Associação Portuguesa de Pais e Amigos do Cidadão Deficiente Mental',
+  'APPACDM de Soure',
+  'APPACDM de Viana do Castelo - Associação Portuguesa de Pais e Amigos do Cidadão Deficiente Mental',
+  'APPACDM do Porto -Associação Portuguesa de Pais e Amigos do Cidadão Deficiente Mental',
+  'APPC - Associação do Porto de Paralisia Cerebral',
+  'APPDA-Coimbra, Associação Portuguesa para as Perurbações do Desenvolvimento e Autismo de Coimbra',
+  'APRAM - Administração dos Portos da Região Autónoma da Madeira, S. A.',
+  'APS - Administração dos Portos de Sines e do Algarve, S. A.',
+  'APSS ADMINISTRAÇÃO DOS PORTOS DE SETÚBAL E SESIMBRA S. A',
+  'AQUANENA - Empresa Municipal de Águas e Saneamento de Alcanena, E. M., S. A.',
+  'AR - Águas do Ribatejo, EIM, SA',
+  'ARM - Águas e Resíduos da Madeira, S.A.',
+  'AS - Empresa das Águas de Santarém, E. M, S. A.',
+  'ASCUDT- Associação Sócio-Cultural dos Deficientes de Trás-os-Montes',
+  'ASDOURO - Associação de Desenvolvimento do Ensino e Formação Profissional do Alto Douro',
+  'ASSOL - Associação de Solidariedade Social de Lafões',
+  'ATAHCA - Associação de Desenvolvimento das Terras Altas do Homem Cávado e Ave',
+  'ATEC - Associação de Formação para a Indústria',
+  'Activar - Associação de Cooperação da Lousã',
+  'Actual Gest - Formação Profissional, L.da',
+  'AdP - Águas de Portugal, SGPS, S.A',
+  'AdP Energias - Energias Renováveis e Serviços Ambientais , S. A.',
+  'AdP Valor - Serviços Ambientais, S. A.',
+  'AdRA - Águas da Região de Aveiro, S. A.',
+  'Administração Central do Sistema de Saúde, I. P.',
+  'Administração Regional de Saúde de Lisboa e Vale do Tejo, I. P.',
+  'Administração Regional de Saúde do Alentejo (ARSA)',
+  'Administração Regional de Saúde do Alentejo, I. P.',
+  'Administração Regional de Saúde do Algarve, I. P.',
+  'Administração Regional de Saúde do Algarve, I.P.',
+  'Administração Regional de Saúde do Centro, I. P.',
+  'Administração Regional de Saúde do Centro,IP(ARSC)',
+  'Administração Regional de Saúde do Norte, I. P.',
+  'Administração Regional de Saúde do Norte,IP (ARSN)',
+  'AgdA - Águas Públicas do Alentejo, S. A.',
+  'Agrupamento Escolas de Colmeias',
+  'Agrupamento Vertical de Canelas',
+  'Agrupamento Vertical de Cristelo',
+  'Agrupamento Vertical de Escolas de Almodôvar',
+  'Agrupamento Vertical de Escolas de Arga e Lima',
+  'Agrupamento Vertical de Escolas de Briteiros',
+  'Agrupamento Vertical de Escolas de Freixo, Ponte de Lima',
+  'Agrupamento Vertical de Escolas de Marco de Canaveses',
+  'Agrupamento Vertical de Escolas de Paços de Ferreira',
+  'Agrupamento Vertical de Escolas Álvaro Coutinho, O Magriço - Penedono',
+  'Agrupamento Vertical de Perafita',
+  ... 2121 more items
+]
+```
+
+4. Qual a distribuição de contratos por tipo de procedimento (quantos contratos tem cada tipo de
+procedimento)?
+```
+db.contratos.aggregate([
+  {
+    $group: {
+      _id: "$tipoprocedimento",
+      count: { $sum: 1 }
+    }
+  }
+])
+
+[
+  { _id: 'Concurso limitado por prévia qualificação', count: 53 },
+  { _id: 'Procedimento de negociação', count: 1 },
+  { _id: 'Concurso público simplificado', count: 3 },
+  { _id: 'Consulta Prévia', count: 8000 },
+  { _id: 'Consulta Prévia Simplificada', count: 96 },
+  { _id: 'Ao abrigo de acordo-quadro (art.º 258.º)', count: 995 },
+  { _id: 'Concurso público', count: 5300 },
+  { _id: 'Contratação excluída II', count: 144 },
+  { _id: 'Ajuste Direto Regime Geral', count: 17067 },
+  { _id: 'Ao abrigo de acordo-quadro (art.º 259.º)', count: 4678 },
+  { _id: 'Setores especiais – isenção parte II', count: 39 },
+  {
+    _id: 'Consulta prévia ao abrigo do artigo 7º da Lei n.º 30/2021, de 21.05',
+    count: 1
+  }
+]
+```
+
+5. Qual o montante global por entidade comunicante (somatório dos contratos associados a uma
+entidade)?
+```
+db.contratos.aggregate([
+  {
+    $group: {
+      _id: "$entidade_comunicante",
+      total: { $sum: "$precocontratual" }
+    }
+  }
+])
+
+[
+  { _id: 'Freguesia de Rio de Loba', total: 0 },
+  { _id: 'Seminário Concilar de Braga', total: 0 },
+  { _id: 'Município de Vizela', total: 0 },
+  { _id: 'Município de Castro Daire', total: 0 },
+  {
+    _id: 'Hospital da Senhora da Oliveira Guimarães, E. P. E.',
+    total: 0
+  },
+  {
+    _id: 'Escola Profissional de Santo Tirso, Sociedade Unipessoal, L.da',
+    total: 0
+  },
+  { _id: 'APL / Administração do Porto de Lisboa, SA', total: 0 },
+  { _id: 'Agrupamento de Escolas Abade de Baçal, Bragança', total: 0 },
+  {
+    _id: 'Unidade Local de Saúde do Arco Ribeirinho, E. P. E.',
+    total: 0
+  },
+  { _id: 'Agrupamento de Escolas de Vila Nova de Cerveira', total: 0 },
+  {
+    _id: 'Direção-Geral do Emprego e das Relações de Trabalho (DGERT)',
+    total: 0
+  },
+  { _id: 'Agrupamento de Escolas das Taipas, Guimarães', total: 0 },
+  {
+    _id: 'Serviços Municipalizados de Água e Transportes da Câmara Municipal de Portalegre',
+    total: 0
+  },
+  { _id: 'Faculdade de Ciências ', total: 0 },
+  {
+    _id: 'Instituto de Financiamento da Agricultura e Pescas - IFAP, I. P.',
+    total: 0
+  },
+  { _id: 'Escola Secundária Jorge Peixinho, Montijo', total: 0 },
+  { _id: 'Agrupamento de Escolas do Castêlo da Maia, Maia', total: 0 },
+  { _id: 'Escola Secundária de Penafiel', total: 0 },
+  { _id: 'Freguesia de Aldeia Viçosa', total: 0 },
+  {
+    _id: 'Centro de Formação Profissional da Indústria da Construção Civil e Obras Públicas do Sul (CENFIC)',
+    total: 0
+  }
+]
+Type "it" for more
+```
